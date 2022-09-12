@@ -1,0 +1,36 @@
+#source:https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset
+#importing data set into R
+dataset1<-read.csv("C:/Users/desineni/Downloads/world_population.csv")
+
+
+#descriptive statistics
+summary(dataset1)
+
+x=mean(dataset1$X2020.Population)
+y=median(dataset1$X2020.Population)
+z=sd(dataset1$X2020.Population)
+
+#transforming variable
+
+transformed_population=(dataset1$X2020.Population-y)/z +x
+
+#plots
+
+library(esquisse)
+
+
+library(ggplot2)
+
+ggplot(dataset1) +
+ aes(x = Continent, y = X2020.Population) +
+ geom_col(fill = "#112446") +
+ theme_minimal()
+
+library(ggplot2)
+
+ggplot(dataset1) +
+  aes(x = Area..km²., y = X2022.Population) +
+  geom_point(shape = "circle", size = 1.5, 
+             colour = "#112446") +
+  theme_minimal()
+
